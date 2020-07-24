@@ -6,13 +6,20 @@ public class PlayerJump : MonoBehaviour
 {
     private Rigidbody2D Rb;
     private Animator PlayerAC;
+
+    public GameObject GameComplete;
+    public GameObject GameOver;
+
+    public int WinCount;
     public float jumpForce = 5f;
     public static bool isDead = false;
-   
+    public static bool isComplete = false;
+
     void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
         PlayerAC = GetComponent<Animator>();
+        Reset();
     }
 
    
@@ -20,9 +27,19 @@ public class PlayerJump : MonoBehaviour
     {
         if (isDead)
             return;
-
-        Jump();
-        
+        if (isDead != true)
+        {
+            Jump();
+            if (KnifeScript.escapeval >= WinCount)
+            {
+                Debug.Log("Won the game");
+                GameComplete.SetActive(true);
+                this.gameObject.SetActive(false);
+                isComplete = true;
+            }
+        }
+      
+ 
     }
     void Jump()
     {
@@ -41,6 +58,13 @@ public class PlayerJump : MonoBehaviour
             isDead = true;
             PlayerAC.SetTrigger("Dead");
             Debug.Log("Game Over"+ KnifeScript.escapeval);
+            GameOver.SetActive(true);
+
         }
+    }
+    public static void  Reset()
+    {
+        KnifeScript.escapeval = 0;
+        isDead = false;
     }
 }

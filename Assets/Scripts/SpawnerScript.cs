@@ -11,11 +11,17 @@ public class SpawnerScript : MonoBehaviour
     {
         StartCoroutine(StartSpawning());
     }
-
+    void Update()
+    {
+        if(PlayerJump.isComplete ||PlayerJump.isDead)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
    
     IEnumerator StartSpawning()
     {
-        if (PlayerJump.isDead != true)
+        if (PlayerJump.isDead != true || PlayerJump.isComplete != true)
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));
             Instantiate(Obstacle);
