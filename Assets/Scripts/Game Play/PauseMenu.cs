@@ -38,12 +38,14 @@ public class PauseMenu : MonoBehaviour
     {
       
         Debug.Log("Retry");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
     public void Next()
     {
        
         Debug.Log("Next");
+        //SceneManager.LoadScene("Level Selections");
         SceneManager.LoadSceneAsync("Level Selections");
     }
     public void Menu()

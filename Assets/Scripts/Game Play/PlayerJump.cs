@@ -10,13 +10,14 @@ public class PlayerJump : MonoBehaviour
     public static int WinCount;
     public float jumpForce = 5f;
     public static bool isDead = false;
-    public static bool isComplete = false;  
+    public static bool isComplete = false;
+    
 
     void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
         PlayerAC = GetComponent<Animator>();
-        Reset();
+      
     }
 
    
@@ -39,17 +40,18 @@ public class PlayerJump : MonoBehaviour
             }
         }
       
- 
+
+
     }
     void Jump()
     {
-        #region PC
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Rb.velocity = new Vector2(Rb.velocity.x, jumpForce);
-            PlayerAC.SetTrigger("Jump");
-        }
-        #endregion
+        //#region PC
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Rb.velocity = new Vector2(Rb.velocity.x, jumpForce);
+        //    PlayerAC.SetTrigger("Jump");
+        //}
+        //#endregion
         #region Android
         if (Input.GetMouseButtonDown(0))
         {
@@ -70,10 +72,5 @@ public class PlayerJump : MonoBehaviour
 
         }
     }
-    public void Reset()
-    {
-        KnifeScript.escapeval = 0;
-        isDead = false;
-        isComplete = false;
-    }
+  
 }

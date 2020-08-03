@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 public class CharacterCollection : MonoBehaviour
 {
     public GameObject SelectedBoy;
     public GameObject SelectedGirl;
-    
-
-
-    void Start()
-    {
-        PlayerPrefs.SetInt("CharacterVal", 1);
-    }
-
    
     public void CharacterSelection(int val)
     {
@@ -33,10 +26,12 @@ public class CharacterCollection : MonoBehaviour
     public void BackToMain()
     {
         Debug.Log("MainMenu");
-        SceneManager.LoadScene("Main Menu");
+        //SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadSceneAsync("Main Menu");
     }
     public void Play()
     {
-        SceneManager.LoadScene("Level Selections");
+        //SceneManager.LoadScene("Level Selections");
+        SceneManager.LoadSceneAsync("Level Selections");
     }
 }

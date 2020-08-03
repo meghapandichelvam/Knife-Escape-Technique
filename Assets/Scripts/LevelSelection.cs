@@ -13,10 +13,13 @@ public class LevelSelection : MonoBehaviour
     public int LevelIndex;
     public Button levels;
 
-  
+    void Awake()
+    {
+      
+    }
     private void Update()
     {
-        //ResetAll();       
+              
         UpdateLevelImage();
         UpdateLevelStatus();
 
@@ -30,8 +33,6 @@ public class LevelSelection : MonoBehaviour
         {
             unlocked = true;
         }
-
-
     }
     public void SetLevelIndex(int levelIndex)
     {
@@ -57,13 +58,5 @@ public class LevelSelection : MonoBehaviour
         Clip.Play();
         SceneManager.LoadScene("KE Main");
     }
-    public void ResetAll()
-    {
-        PlayerPrefs.SetInt("LevelIndex", 1);
-        for (int i = 1; i <= 6; i++)
-        {
-            PlayerPrefs.SetInt("Lv" + i, 0);
-        }
-        
-    }
+   
 }
